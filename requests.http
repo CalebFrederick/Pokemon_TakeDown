@@ -1,0 +1,55 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ0cmFpbmVyX2lkIjoxLCJleHAiOjE2NjI1ODQ3MzZ9.rvGbblV6VTDtWQQHdfrwha-YdAfBmbRC89quk4T8Qs4
+
+### Pokemon Requests
+
+### Pokemon Index
+GET http://localhost:3000/pokemon.json
+Authorization: Bearer {{jwt}}
+
+### Pokemon Show
+GET http://localhost:3000/pokemon/3.json
+
+### Pokemon Create
+POST http://localhost:3000/pokemon.json
+#Authorization: Bearer {{jwt_admin}}
+Content-Type: application/json
+
+{
+  "pokemon_name": "Starmie",
+  "trainer_id": 1
+}
+
+### Pokemon Update
+PATCH http://localhost:3000/pokemon/3.json
+#Authorization: Bearer {{jwt_admin}}
+Content-Type: application/json
+
+{
+  "pokemon_name": "Cubone"
+}
+
+### Pokemon Destroy
+DELETE http://localhost:3000/pokemon/3.json
+#Authorization: Bearer {{jwt_admin}}
+
+### User Requests
+
+### Users create (signup)
+POST http://localhost:3000/trainer.json
+Content-Type: application/json
+
+{
+  "trainer": "Test Trainer",
+  "email": "test@test.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### Sessions create (login)
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password"
+}
