@@ -28,8 +28,7 @@ class PokemonController < ApplicationController
   def update
     pokemon = Pokemon.find_by(id: params[:id])
     pokemon.pokemon_name = params[:pokemon_name] || pokemon.pokemon_name
-    pokemon.save 
-    render json: pokemon.as_json
+    pokemon.save
 
     if pokemon.save
       render json: pokemon
@@ -39,7 +38,7 @@ class PokemonController < ApplicationController
   end
 
   def destroy
-    pokemon = pokemon.find_by(id:params["id"])
+    pokemon = Pokemon.find_by(id: params[:id])
     pokemon.destroy
     render json: {message: "Pokemon removed from party"}
   end

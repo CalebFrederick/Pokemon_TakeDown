@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ0cmFpbmVyX2lkIjoxLCJleHAiOjE2NjI1ODQ3MzZ9.rvGbblV6VTDtWQQHdfrwha-YdAfBmbRC89quk4T8Qs4
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ0cmFpbmVyX2lkIjozLCJleHAiOjE2NjI2ODY5Njh9.2fITqEyztlwnw3408elrBWiZoYKIcCUbla4F70N2tmY
 
 ### Pokemon Requests
 
@@ -7,30 +7,31 @@ GET http://localhost:3000/pokemon.json
 Authorization: Bearer {{jwt}}
 
 ### Pokemon Show
-GET http://localhost:3000/pokemon/3.json
+GET http://localhost:3000/pokemon/6.json
+Authorization: Bearer {{jwt}}
 
 ### Pokemon Create
 POST http://localhost:3000/pokemon.json
-#Authorization: Bearer {{jwt_admin}}
+Authorization: Bearer {{jwt}}
 Content-Type: application/json
 
 {
-  "pokemon_name": "Starmie",
-  "trainer_id": 1
+  "pokemon_name": "Pikachu",
+  "trainer_id": 3
 }
 
 ### Pokemon Update
-PATCH http://localhost:3000/pokemon/3.json
-#Authorization: Bearer {{jwt_admin}}
+PATCH http://localhost:3000/pokemon/6.json
+Authorization: Bearer {{jwt}}
 Content-Type: application/json
 
 {
-  "pokemon_name": "Cubone"
+  "pokemon_name": "Vulpix"
 }
 
 ### Pokemon Destroy
-DELETE http://localhost:3000/pokemon/3.json
-#Authorization: Bearer {{jwt_admin}}
+DELETE http://localhost:3000/pokemon/6.json
+Authorization: Bearer {{jwt}}
 
 ### User Requests
 
@@ -39,8 +40,8 @@ POST http://localhost:3000/trainer.json
 Content-Type: application/json
 
 {
-  "trainer": "Test Trainer",
-  "email": "test@test.com",
+  "trainer": "Amanda",
+  "email": "amanda@test.com",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -50,6 +51,6 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "pat@test.com",
   "password": "password"
 }

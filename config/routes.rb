@@ -6,14 +6,20 @@ Rails.application.routes.draw do
 
   get '/all_pokemon/' => 'all_pokemon#pokemon'
 
+  get '/pokemon/:id' => 'pokemon#show'
+
   post '/pokemon/' => 'pokemon#create'
 
-  post "/trainer" => "trainers#create"
+  patch '/pokemon/:id' => 'pokemon#update'
 
-  delete "/pokemon/:id" => "pokemon#destroy"
+  post '/trainer' => "trainers#create"
 
-  get "/pokemon" => "pokemon#index"
+  delete '/pokemon/:id' => "pokemon#destroy"
 
-  post "/sessions" => "sessions#create"
+  get '/pokemon' => "pokemon#index"
+
+  post '/sessions' => "sessions#create"
+
+  # get 'takedown/:id' => 'takedown#sprite'
 
 end
