@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get '/takedown/:pokemon' => 'takedown#take_down'
 
+  get '/takedown/:id' => 'takedown#damage'
+
   get '/type/:type' => 'type#type'
 
   get '/all_pokemon/' => 'all_pokemon#pokemon'
