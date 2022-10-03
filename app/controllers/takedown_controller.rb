@@ -2,7 +2,13 @@ class TakedownController < ApplicationController
 require 'poke-api-v2'
 
 def take_down
-  d_from = []
+  double_from1 = []
+  half_from1 = []
+  none_from1 = []
+  double_from2 = []
+  half_from2 = []
+  none_from2 = []
+
   pokemon_types = PokeApi.get(pokemon: params[:pokemon]).types.map{ |type| type.type.name}
   pokemon_sprite = PokeApi.get(pokemon: params[:pokemon]).sprites.front_default
   pokemon_type1 = pokemon_types.first()
@@ -11,13 +17,39 @@ def take_down
   else 
     pokemon_type2 = ""
   end
-  damage_from = PokeApi.get(type: pokemon_type1).damage_relations.double_damage_from
-  for t in damage_from do
-    d_from << t.name
+
+  double_damage_from1 = PokeApi.get(type: pokemon_type1).damage_relations.double_damage_from
+  for t in double_damage_from1 do
+    double_from1 << t.name
+  end
+
+  half_damage_from1 = PokeApi.get(type: pokemon_type1).damage_relations.half_damage_from
+  for t in half_damage_from1 do
+    half_from1 << t.name
+  end
+
+  none_damage_from1 = PokeApi.get(type: pokemon_type1).damage_relations.no_damage_from
+  for t in none_damage_from1 do
+    none_from1 << t.name
+  end
+
+  double_damage_from2 = PokeApi.get(type: pokemon_type2).damage_relations.double_damage_from
+  for t in double_damage_from2 do
+    double_from2 << t.name
+  end
+
+  half_damage_from2 = PokeApi.get(type: pokemon_type2).damage_relations.half_damage_from
+  for t in half_damage_from2 do
+    half_from2 << t.name
   end
   
-  damage_from1 = damage_from.first().name
-  render json: {types: pokemon_types, sprite: pokemon_sprite, type1: pokemon_type1, type2: pokemon_type2, from: d_from}
+  none_damage_from2 = PokeApi.get(type: pokemon_type2).damage_relations.no_damage_from
+  for t in none_damage_from2 do
+    none_from2 << t.name
+  end
+  
+
+  render json: {types: pokemon_types, sprite: pokemon_sprite, type1: pokemon_type1, type2: pokemon_type2, double_from1: double_from1, half_from1: half_from1, none_from1: none_from1, double_from2: double_from2, half_from2: half_from2, none_from2: none_from2}
 end
 
 def sprite 
